@@ -1,0 +1,36 @@
+### Jenkins store the artifacts on AWS S3 Bucket
+-------------------------------------------------------------------
+
+# Create a Jenkins Server
+
+# Create a bucket in S3
+
+# create IAM roles
+
+IAM > ROLES > Createroles > EC2 > S3FullAccess
+
+##{note :- now above role, have to assign for Henkins server}
+
+# Select Jenkins Server >> Action >> Instance Setting >> AttachOrReplaceIAMRole >> IAMRole >> S3FullAccess >> Apply
+
+##{note:- now login & go to the jenkins consol and install s3 publisher plug-in}
+
+# Manage Jenkins >> Manage Plug-in >> Available >> S3 Publish >> Install >> Manage Jenkins >> Configure System >> Amazon S3 >> "Type the name" >> apply
+
+# New Job >> Maven Projevct >> >> Source Code Management >> Git >> Paste Repository URL 
+  BUILD >> Golas & Options >> clean install package >> 
+  POST BUILD ACTION >> Public artifacts to S3 bucket >> file to upload >>  source >> **/webapp/target/*.war ##{note:-artifact store or get created in webapp directory}
+                                                                           Exclude >> /webapp/target
+                                                                           DestinationBucket >> type the s3 bucketname
+                                                                           storage class >> standard
+                                                                           bucket region >> ap-south-1
+
+# Build
+
+# console output   
+
+# Go to s3 bucket and verify
+
+
+
+#
